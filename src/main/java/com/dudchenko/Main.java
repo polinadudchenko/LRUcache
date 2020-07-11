@@ -1,19 +1,23 @@
 package com.dudchenko;
 
-import java.util.HashMap;
-import java.util.LinkedHashMap;
+import java.util.Map;
 import java.util.Scanner;
 
 public class Main {
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-
-        System.out.println("Let's count unique elements! Type a String");
-        String input = scanner.nextLine();
-        LinkedHashMap<String, Integer> result = new Count().countElements(input);
-
-
-        System.out.print(OutputFormatter.format(result));
+        Counter counter = new Counter();
+        System.out.println("Let's count unique elements! Type a String. For quit type 'exit' ");
+        while (true) {
+            String input = scanner.nextLine();
+            if (input.equals("exit")) {
+                break;
+            }
+            Map<String, Integer> result = counter.getResult(input);
+            System.out.println(result.toString());
+            System.out.print(OutputFormatter.format(result));
+            System.out.println(result.toString());
+        }
     }
 }
