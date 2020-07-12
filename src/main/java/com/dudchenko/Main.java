@@ -15,9 +15,7 @@ public class Main {
                 break;
             }
             Map<String, Integer> result = counter.getResult(input);
-            System.out.println(result.toString());
             System.out.print(OutputFormatter.format(result));
-            System.out.println(result.toString());
         }
     }
 }
