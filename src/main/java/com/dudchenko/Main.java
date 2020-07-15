@@ -8,13 +8,14 @@ public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         Counter counter = new Counter();
+        Cache cache = new Cache();
         System.out.println("Let's count unique elements! Type a String. For quit type 'exit' ");
         while (true) {
             String input = scanner.nextLine();
             if (input.equals("exit")) {
                 break;
             }
-            Map<String, Integer> result = counter.getResult(input);
+            Map<String, Integer> result = counter.getResult(input, cache);
             System.out.print(OutputFormatter.format(result));
         }
     }

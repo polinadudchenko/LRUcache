@@ -10,7 +10,7 @@ public class Cache {
     private Node headNode;
     private Node tailNode;
     private HashMap<String, Node> cacheMap = new HashMap<>();
-    private final int cacheCapacity = 5;
+    private static final int cacheCapacity = 5;
 
     public Map<String, Integer> get(String key) {
         if (cacheMap.get(key) == null) {
@@ -26,7 +26,6 @@ public class Cache {
     public void put(String key, HashMap<String, Integer> value) {
         if (cacheMap.containsKey(key)) {
             Node node = cacheMap.get(key);
-            node.setNodeValue(value);
             removeNode(node);
             addNode(node);
         } else {

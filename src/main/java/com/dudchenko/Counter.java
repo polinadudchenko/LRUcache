@@ -6,9 +6,7 @@ import java.util.Map;
 
 public class Counter {
 
-    private Cache cache = new Cache();
-
-    public Map<String, Integer> getResult(String input) {
+    public Map<String, Integer> getResult(String input, Cache cache) {
         if (!cache.contains(input)) {
             cache.put(input, countElements(input));
         }

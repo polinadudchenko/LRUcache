@@ -25,11 +25,12 @@ class OutputFormatterTest {
         Map<String, Integer> map = new LinkedHashMap<>();
         map.put("I", 1);
         String actual = formatter.format(map);
+
         assertEquals(expected.toString(), actual);
     }
 
     @Test
-    public void givenMapWithTwoKeys_whenFormat_thenTwoStringsResult(){
+    public void givenMapWithTwoKeys_whenFormat_thenTwoStringsResult() {
         StringBuilder expected = new StringBuilder();
         expected.append("\"h\"").append(" ").append("-").append(" ").append(1).append(System.lineSeparator());
         expected.append("\"i\"").append(" ").append("-").append(" ").append(1).append(System.lineSeparator());
@@ -37,11 +38,12 @@ class OutputFormatterTest {
         map.put("h", 1);
         map.put("i", 1);
         String actual = formatter.format(map);
+
         assertEquals(expected.toString(), actual);
     }
 
     @Test
-    public void givenMapWithFourKeys_whenFormat_thenFourStringsResult(){
+    public void givenMapWithFourKeys_whenFormat_thenFourStringsResult() {
         StringBuilder expected = new StringBuilder();
         expected.append("\"h\"").append(" ").append("-").append(" ").append(1).append(System.lineSeparator());
         expected.append("\"e\"").append(" ").append("-").append(" ").append(1).append(System.lineSeparator());
@@ -53,6 +55,7 @@ class OutputFormatterTest {
         map.put("l", 2);
         map.put("o", 1);
         String actual = formatter.format(map);
+
         assertEquals(expected.toString(), actual);
     }
 
