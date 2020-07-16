@@ -54,7 +54,7 @@ public class CacheTest {
         map.put("i", 1);
         mockCache.put("hi", map);
 
-        Mockito.verify(mockCache, Mockito.times(1)).put("hi", map);
+        Mockito.verify(mockCache).put("hi", map);
 
     }
 }

@@ -8,21 +8,22 @@ public class Counter {
 
     public Map<String, Integer> getResult(String input, Cache cache) {
         if (!cache.contains(input)) {
-            cache.put(input, countElements(input));
+            cache.put(input, countCharacters(input));
         }
         return cache.get(input);
     }
 
-    private HashMap<String, Integer> countElements(String input) {
+    private Map<String, Integer> countCharacters(String input) {
         HashMap<String, Integer> result = new LinkedHashMap<>();
         String[] chars = input.split("");
-        for (String aChar : chars) {
-            if (result.get(aChar) != null) {
-                result.put(aChar, result.get(aChar) + 1);
+        for (String symbol : chars) {
+            if (result.get(symbol) != null) {
+                result.put(symbol, result.get(symbol) + 1);
             } else {
-                result.put(aChar, 1);
+                result.put(symbol, 1);
             }
         }
         return result;
     }
 }
+

@@ -23,7 +23,7 @@ public class Cache {
         }
     }
 
-    public void put(String key, HashMap<String, Integer> value) {
+    public void put(String key, Map<String, Integer> value) {
         if (cacheMap.containsKey(key)) {
             Node node = cacheMap.get(key);
             removeNode(node);
