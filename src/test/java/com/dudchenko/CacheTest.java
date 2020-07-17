@@ -32,13 +32,13 @@ public class CacheTest {
 
     @Test
     public void givenKey_whenGet_thenReturnMap() {
-        Map<String, Integer> expected = new HashMap<>();
-        expected.put("h", 1);
-        expected.put("i", 1);
+        Map<Character, Integer> expected = new HashMap<>();
+        expected.put('h', 1);
+        expected.put('i', 1);
 
-        HashMap<String, Integer> map = new HashMap<>();
-        map.put("h", 1);
-        map.put("i", 1);
+        Map<Character, Integer> map = new HashMap<>();
+        map.put('h', 1);
+        map.put('i', 1);
         cache.put("hi", map);
 
         assertEquals(expected, cache.get("hi"));
@@ -49,9 +49,9 @@ public class CacheTest {
 
         Cache mockCache = Mockito.spy(Cache.class);
 
-        HashMap<String, Integer> map = new HashMap<>();
-        map.put("h", 1);
-        map.put("i", 1);
+        Map<Character, Integer> map = new HashMap<>();
+        map.put('h', 1);
+        map.put('i', 1);
         mockCache.put("hi", map);
 
         Mockito.verify(mockCache).put("hi", map);

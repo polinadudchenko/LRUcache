@@ -1,12 +1,11 @@
 package com.dudchenko;
 
-import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
 public class Counter {
 
-    public Map<String, Integer> getResult(String input, Cache cache) {
+    public Map<Character, Integer> getResult(String input, Cache cache) {
         if (!cache.contains(input)) {
             cache.put(input, countCharacters(input));
         }
@@ -15,7 +14,6 @@ public class Counter {
 
     private Map<Character, Integer> countCharacters(String input) {
         Map<Character, Integer> result = new LinkedHashMap<>();
-        String[] chars = input.split("");
         for (int i = 0; i < input.length(); i++) {
             if (result.get(input.charAt(i)) != null) {
                 result.put(input.charAt(i), result.get(input.charAt(i)) + 1);

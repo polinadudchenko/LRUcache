@@ -2,13 +2,13 @@ package com.dudchenko;
 
 import lombok.Data;
 
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 @Data
 public class Cache {
 
-    private Map<String, Map<Character, Integer>> cacheMap = new HashMap<>();
+    private Map<String, Map<Character, Integer>> cacheMap = new LinkedHashMap<>();
     private static final int cacheCapacity = 5;
 
     public Map<Character, Integer> get(String key) {
@@ -16,7 +16,7 @@ public class Cache {
             return null;
         } else {
             Map<Character, Integer> node = cacheMap.get(key);
-            cacheMap.keySet().removeIf(mapKey -> mapKey == key);
+            cacheMap.remove(key);
             cacheMap.put(key, node);
             return cacheMap.get(key);
         }
@@ -24,18 +24,11 @@ public class Cache {
 
     public void put(String key, Map<Character, Integer> value) {
         if (cacheMap.containsKey(key)) {
-            Map<Character, Integer> node = cacheMap.get(key);
-            cacheMap.keySet().removeIf(mapKey -> mapKey == key);
-            cacheMap.put(key, node);
-        } else {
-            if (cacheMap.size() == cacheCapacity) {
-                cacheMap.remove(headNode.getNodeKey());
-                removeNode(headNode);
+            cacheMap.remove(key);
+        } else if (cacheMap.size() == cacheCapacity) {
+                cacheMap.remove(cacheMap.keySet().iterator().next());
             }
-            Map<Character, Integer> node = new Node(key, value);
-            addNode(node);
-            cacheMap.put(key, node);
-        }
+        cacheMap.put(key, value);
     }
 
     public boolean contains(String key) {

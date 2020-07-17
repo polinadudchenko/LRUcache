@@ -16,12 +16,12 @@ public class Main {
             if (input.equals("exit")) {
                 break;
             }
-            Map<String, Integer> result = counter.getResult(input, cache);
+            Map<Character, Integer> result = counter.getResult(input, cache);
             System.out.print(format(result));
         }
     }
 
-    public static String format(Map<String, Integer> result) {
+    public static String format(Map<Character, Integer> result) {
         StringBuilder output = new StringBuilder();
         Iterator iterator = result.entrySet().iterator();
         while (iterator.hasNext()) {
