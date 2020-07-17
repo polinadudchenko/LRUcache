@@ -7,63 +7,34 @@ import java.util.Map;
 
 @Data
 public class Cache {
-    private Node headNode;
-    private Node tailNode;
-    private HashMap<String, Node> cacheMap = new HashMap<>();
+
+    private Map<String, Map<Character, Integer>> cacheMap = new HashMap<>();
     private static final int cacheCapacity = 5;
 
-    public Map<String, Integer> get(String key) {
+    public Map<Character, Integer> get(String key) {
         if (cacheMap.get(key) == null) {
             return null;
         } else {
-            Node node = cacheMap.get(key);
-            removeNode(node);
-            addNode(node);
-            return node.getNodeValue();
+            Map<Character, Integer> node = cacheMap.get(key);
+            cacheMap.keySet().removeIf(mapKey -> mapKey == key);
+            cacheMap.put(key, node);
+            return cacheMap.get(key);
         }
     }
 
-    public void put(String key, Map<String, Integer> value) {
+    public void put(String key, Map<Character, Integer> value) {
         if (cacheMap.containsKey(key)) {
-            Node node = cacheMap.get(key);
-            removeNode(node);
-            addNode(node);
+            Map<Character, Integer> node = cacheMap.get(key);
+            cacheMap.keySet().removeIf(mapKey -> mapKey == key);
+            cacheMap.put(key, node);
         } else {
             if (cacheMap.size() == cacheCapacity) {
                 cacheMap.remove(headNode.getNodeKey());
                 removeNode(headNode);
             }
-            Node node = new Node(key, value);
+            Map<Character, Integer> node = new Node(key, value);
             addNode(node);
             cacheMap.put(key, node);
-        }
-    }
-
-    private void removeNode(Node node) {
-        if (node.getPrevious() != null) {
-            node.getPrevious().setNext(node.getNext());
-        } else {
-            headNode = node.getNext();
-        }
-
-        if (node.getNext() != null) {
-            node.getNext().setPrevious(node.getPrevious());
-        } else {
-            tailNode = node.getPrevious();
-        }
-    }
-
-
-    private void addNode(Node node) {
-        if (tailNode != null) {
-            tailNode.setNext(node);
-        }
-        node.setPrevious(tailNode);
-        node.setNext(null);
-        tailNode = node;
-
-        if (headNode == null) {
-            headNode = tailNode;
         }
     }
 

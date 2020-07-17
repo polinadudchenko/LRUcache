@@ -13,14 +13,14 @@ public class Counter {
         return cache.get(input);
     }
 
-    private Map<String, Integer> countCharacters(String input) {
-        HashMap<String, Integer> result = new LinkedHashMap<>();
+    private Map<Character, Integer> countCharacters(String input) {
+        Map<Character, Integer> result = new LinkedHashMap<>();
         String[] chars = input.split("");
-        for (String symbol : chars) {
-            if (result.get(symbol) != null) {
-                result.put(symbol, result.get(symbol) + 1);
+        for (int i = 0; i < input.length(); i++) {
+            if (result.get(input.charAt(i)) != null) {
+                result.put(input.charAt(i), result.get(input.charAt(i)) + 1);
             } else {
-                result.put(symbol, 1);
+                result.put(input.charAt(i), 1);
             }
         }
         return result;
