@@ -3,16 +3,10 @@ package com.dudchenko;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-public class Counter {
+public class Counter implements ICounter {
 
-    public Map<Character, Integer> getResult(String input, Cache cache) {
-        if (!cache.contains(input)) {
-            cache.put(input, countCharacters(input));
-        }
-        return cache.get(input);
-    }
-
-    private Map<Character, Integer> countCharacters(String input) {
+    @Override
+    public Map<Character, Integer> countCharacters(String input) {
         Map<Character, Integer> result = new LinkedHashMap<>();
         for (int i = 0; i < input.length(); i++) {
             if (result.get(input.charAt(i)) != null) {

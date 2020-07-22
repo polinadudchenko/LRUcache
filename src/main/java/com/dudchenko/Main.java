@@ -8,16 +8,13 @@ public class Main {
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        Counter counter = new Counter();
-        Cache cache = new Cache();
+        ICounter counter = new CacheCounter(new Counter());
         System.out.println("Let's count unique elements! Type a String. For quit type 'exit' ");
-        while (true) {
-            String input = scanner.nextLine();
-            if (input.equals("exit")) {
-                break;
-            }
-            Map<Character, Integer> result = counter.getResult(input, cache);
+        String input = scanner.nextLine();
+        while (!input.equals("exit")) {
+            Map<Character, Integer> result = counter.countCharacters(input);
             System.out.print(format(result));
+            input = scanner.nextLine();
         }
     }
 
@@ -26,12 +23,7 @@ public class Main {
         Iterator iterator = result.entrySet().iterator();
         while (iterator.hasNext()) {
             Map.Entry pair = (Map.Entry) iterator.next();
-            output.append("\"");
-            output.append(pair.getKey());
-            output.append("\"");
-            output.append(" - ");
-            output.append(pair.getValue());
-            output.append(System.lineSeparator());
+            System.out.println("\"" + pair.getKey() + "\"" + " - " + pair.getValue());
         }
         return output.toString();
     }
