@@ -2,7 +2,7 @@ package com.dudchenko;
 
 import java.util.Map;
 
-public interface ICounter {
+public interface CharsCounter {
 
     Map<Character, Integer> countCharacters(String input);
 }

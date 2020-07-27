@@ -2,11 +2,11 @@ package com.dudchenko;
 
 import java.util.Map;
 
-public abstract class CounterDecorator implements ICounter{
+public abstract class CharsCounterDecorator implements CharsCounter {
 
-    private ICounter counter;
+    private CharsCounter counter;
 
-    public CounterDecorator(ICounter counter) {
+    public CharsCounterDecorator(CharsCounter counter) {
         this.counter = counter;
     }
 

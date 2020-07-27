@@ -22,9 +22,7 @@
 
     <properties>
         <junit.jupiter.version>5.6.2</junit.jupiter.version>
-        <lombok.version>1.18.12</lombok.version>
         <mockito.version>2.23.4</mockito.version>
-        <annotations.java.version>RELEASE</annotations.java.version>
     </properties>
 
     <dependencies>
@@ -33,20 +31,6 @@
             <artifactId>junit-jupiter</artifactId>
             <version>${junit.jupiter.version}</version>
             <scope>test</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <version>${lombok.version}</version>
-            <scope>provided</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>org.jetbrains</groupId>
-            <artifactId>annotations-java5</artifactId>
-            <version>${annotations.java.version}</version>
-            <scope>compile</scope>
         </dependency>
 
         <dependency>
