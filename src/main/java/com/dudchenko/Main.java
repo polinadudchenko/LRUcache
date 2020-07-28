@@ -1,6 +1,5 @@
 package com.dudchenko;
 
-import java.util.Iterator;
 import java.util.Map;
 import java.util.Scanner;
 
@@ -19,10 +18,7 @@ public class Main {
     }
 
     public static void printResult(Map<Character, Integer> result) {
-        StringBuilder output = new StringBuilder();
-        Iterator iterator = result.entrySet().iterator();
-        while (iterator.hasNext()) {
-            Map.Entry pair = (Map.Entry) iterator.next();
+        for (Map.Entry pair : result.entrySet()) {
             System.out.println("\"" + pair.getKey() + "\"" + " - " + pair.getValue());
         }
     }

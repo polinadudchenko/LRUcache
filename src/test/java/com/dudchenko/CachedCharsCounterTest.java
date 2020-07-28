@@ -1,6 +1,5 @@
 package com.dudchenko;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -12,21 +11,17 @@ import org.mockito.junit.jupiter.MockitoExtension;
 class CachedCharsCounterTest {
 
     @InjectMocks
-    private CachedCharsCounter cache;
+    private CachedCharsCounter сachedCharsCounter;
     @Mock
-    private UniqueCharsCounter counter;
-
-    @BeforeEach
-    private void setUp() {
-        counter = new UniqueCharsCounter();
-        cache = new CachedCharsCounter(counter);
-    }
+    private CharsCounter charsCounter;
 
     @Test
-    public void givenParametersToPut_whenPut_thenPutExecuted() {
-        CachedCharsCounter spyCache = Mockito.spy(cache);
+    public void givenParametersToPut_whenCountCharacters_thenCountCharactersExecuted() {
+        CachedCharsCounter spyCache = Mockito.spy(сachedCharsCounter);
+        spyCache.countCharacters("hi");
         spyCache.countCharacters("hi");
 
-        Mockito.verify(spyCache).countCharacters("hi");
+        Mockito.verify(spyCache, Mockito.times(2)).countCharacters("hi");
+        Mockito.verify(charsCounter, Mockito.times(1)).countCharacters("hi");
     }
 }

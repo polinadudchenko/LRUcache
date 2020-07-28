@@ -8,7 +8,7 @@ import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class CounterTest {
+class UniqueCharsCounterTest {
 
     private UniqueCharsCounter counter;
 
@@ -18,11 +18,10 @@ class CounterTest {
     }
 
     @Test
-    public void givenThreeSpaceString_whenCountElements_thenMapWithKeyEqualsSpace() {
+    public void givenThreeSpaceString_whenCountCharacters_thenMapWithKeyEqualsSpace() {
         String input = "   ";
         Map<Character, Integer> expected = new LinkedHashMap<>();
-        expected.put
-                (input.charAt(0), 3);
+        expected.put(' ', 3);
 
         Map<Character, Integer> actual = counter.countCharacters(input);
 
@@ -30,10 +29,10 @@ class CounterTest {
     }
 
     @Test
-    public void givenOneSymbolString_whenCountElements_thenMapWithKeyEqualsSymbol() {
+    public void givenOneSymbolString_whenCountCharacters_thenMapWithKeyEqualsSymbol() {
         String input = "a";
         Map<Character, Integer> expected = new LinkedHashMap<>();
-        expected.put(input.charAt(0), 1);
+        expected.put('a', 1);
 
         Map<Character, Integer> actual = counter.countCharacters(input);
 
@@ -41,7 +40,7 @@ class CounterTest {
     }
 
     @Test
-    public void givenFiveSymbolString_whenCountElements_thenMapWithFiveKey() {
+    public void givenFiveSymbolString_whenCountCharacters_thenMapWithFiveKey() {
         String input = "Hi Jo";
         Map<Character, Integer> expected = new LinkedHashMap<>();
         expected.put('H', 1);
@@ -56,7 +55,7 @@ class CounterTest {
     }
 
     @Test
-    public void givenStringWithSameSymbol_whenCountElements_thenMapWithKeyEqualsSymbol() {
+    public void givenStringWithSameSymbol_whenCountCharacters_thenMapWithKeyEqualsSymbol() {
         String input = "aaa";
         Map<Character, Integer> expected = new LinkedHashMap<>();
         expected.put('a', 3);
@@ -67,7 +66,7 @@ class CounterTest {
     }
 
     @Test
-    public void givenStringWithNumbers_whenCountElements_thenMapWithKeysEqualsNumbers() {
+    public void givenStringWithNumbers_whenCountCharacters_thenMapWithKeysEqualsNumbers() {
         String input = "789";
         Map<Character, Integer> expected = new LinkedHashMap<>();
         expected.put('7', 1);
